@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Report API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Report
+paths:
+  /api/v1/report:
+    get:
+      operationId: returnAListOfPublicReports
+      summary: Return a List of Public Reports
+      tags:
+      - Report
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/report/{reportId}/results.json:
+    get:
+      operationId: returnReportContentsAsArrayOfJsonObjects
+      summary: Return Report Contents as Array of JSON Objects
+      tags:
+      - Report
+      parameters:
+      - name: reportId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/report/{reportId}/results.csv:
+    get:
+      operationId: returnReportContentsAsCsv
+      summary: Return Report Contents as CSV
+      tags:
+      - Report
+      parameters:
+      - name: reportId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

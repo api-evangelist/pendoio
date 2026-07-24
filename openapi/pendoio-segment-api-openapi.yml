@@ -1,0 +1,256 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Segment API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Segment
+paths:
+  /api/v1/segment:
+    get:
+      operationId: getAllSharedEveryoneSegments
+      summary: Get All Shared (Everyone) Segments
+      tags:
+      - Segment
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{id}:
+    get:
+      operationId: getSegmentBySegmentid
+      summary: Get Segment by segmentId
+      tags:
+      - Segment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitors:
+    post:
+      operationId: startExportOfSegmentVisitors
+      summary: Start export of segment visitors
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitors/{jobId}/status:
+    get:
+      operationId: checkSegmentExportStatus
+      summary: Check segment export status
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitors/{jobId}/results/{contentType}:
+    get:
+      operationId: retrieveSegmentExportResults
+      summary: Retrieve segment export results
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: contentType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/upload:
+    post:
+      operationId: createASegment
+      summary: Create a segment
+      tags:
+      - Segment
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: EnterYourSegmentName
+              visitors:
+              - visitor1
+              - visitor2
+              - visitor3
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/status:
+    get:
+      operationId: getSegmentStatus
+      summary: Get segment status
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}:
+    put:
+      operationId: updateASegment
+      summary: Update a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: EnterYourSegmentName
+              visitors:
+              - visitor1
+              - visitor2
+              - visitor3
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: deleteASegment
+      summary: Delete a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitor/{visitorId}:
+    put:
+      operationId: addAVisitorToASegment
+      summary: Add a visitor to a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: removeAVisitorFromASegment
+      summary: Remove a visitor from a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitor:
+    patch:
+      operationId: addRemoveSmallBatchesOfVisitorsToASegment
+      summary: Add/remove small batches of visitors to a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              patch:
+              - op: add
+                path: /visitors
+                value:
+                - visitor3
+                - visitor4
+              - op: remove
+                path: /visitors
+                value:
+                - visitor1
+                - visitor2
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

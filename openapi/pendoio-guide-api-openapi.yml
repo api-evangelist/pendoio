@@ -1,0 +1,200 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Guide API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Guide
+paths:
+  /api/v1/guide:
+    get:
+      operationId: returnListOfAllGuides
+      summary: Return List of All Guides
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/history:
+    get:
+      operationId: retrieveChangeHistoryForAGuide
+      summary: Retrieve Change History for a Guide
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/visitor/{visitorId}/reset:
+    post:
+      operationId: resetGuideSeenForSpecificVisitor
+      summary: Reset Guide Seen for Specific Visitor
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/all/visitor/{visitorId}/reset:
+    post:
+      operationId: resetGuideSeenForSpecificVisitorForAllGuides
+      summary: Reset Guide Seen for Specific Visitor for All Guides
+      tags:
+      - Guide
+      parameters:
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/reset:
+    post:
+      operationId: resetIndividualStagedGuide
+      summary: Reset Individual Staged Guide
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/staged/reset:
+    post:
+      operationId: resetAllStagedGuides
+      summary: Reset All Staged Guides
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/experiment/export:
+    post:
+      operationId: exportGuideExperimentResults
+      summary: Export Guide Experiment Results
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/localization/export:
+    get:
+      operationId: bulkXliffExport
+      summary: Bulk XLIFF Export
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/localization/import:
+    post:
+      operationId: bulkXliffImport
+      summary: Bulk XLIFF Import
+      tags:
+      - Guide
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/order:
+    get:
+      operationId: getGuideOrder
+      summary: Get guide order
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/segment:
+    put:
+      operationId: changeGuideSegment
+      summary: Change guide segment
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              segmentId: <value>
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/state:
+    put:
+      operationId: changeGuideState
+      summary: Change guide state
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              state: <value>
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

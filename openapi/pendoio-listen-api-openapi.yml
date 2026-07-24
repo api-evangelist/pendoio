@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Listen API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Listen
+paths:
+  /api/v1/feedback/options:
+    get:
+      operationId: getFeedbackOptions
+      summary: Get feedback options
+      tags:
+      - Listen
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/feedback:
+    post:
+      operationId: createNewFeedback
+      summary: Create new feedback
+      tags:
+      - Listen
+      requestBody:
+        content:
+          application/json:
+            example:
+              accountId: exampleAccount
+              visitorId: exampleVisitor
+              createdById: anotherVisitor
+              createdAt: 1746194289860
+              title: This is the title
+              description: This is a more verbose description of the feedback.
+              appIds:
+              - -323232
+              labels:
+              - name: Admin
+                category: Role
+              - name: label
+              importance: 2
+              productAreas:
+              - _PENDO_DEFAULTGROUP_00_
+              linksData:
+              - title: Pendo
+                linkUrl: https://app.pendo.io
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: deleteFeedback
+      summary: Delete feedback
+      tags:
+      - Listen
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/feedback/{id}:
+    patch:
+      operationId: updateExistingFeedback
+      summary: Update existing feedback
+      tags:
+      - Listen
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              title: This is a brand new title
+              description: This is the same piece of feedback in the previous Create New Feedback example, but with updated title, creator, description, labels, and importance.
+              labels:
+              - name: newlabel
+                category: newcategory
+              - name: existinglabel1
+              - name: existinglabel2
+                category: existingcategory1
+              importance: -1
+              createdBy: AgathaHarkness
+              createdAt: 1746194980796
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

@@ -1,0 +1,280 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Metadata API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Metadata
+paths:
+  /api/v1/metadata/schema/{kind}:
+    get:
+      operationId: getAMetadataSchema
+      summary: Get a Metadata Schema
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/{group}/value/{id}/{fieldName}:
+    get:
+      operationId: getValueOfAMetadataField
+      summary: Get Value of a Metadata Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fieldName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      operationId: setValueForAnAgentOrCustomField
+      summary: Set Value for an Agent or Custom Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fieldName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/pendo/value/{id}/blacklistguides:
+    put:
+      operationId: optOutAVisitorOrAccountFromAllGuideDisplay
+      summary: Opt-out a Visitor or Account From All Guide Display
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example: true
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/pendo/value/{id}/donotprocess:
+    put:
+      operationId: optOutOrDoNotProcessAVisitorOrAccount
+      summary: Opt-Out or Do Not Process a Visitor or Account
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example: true
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/{group}/value:
+    post:
+      operationId: setValueForASetOfAgentOrCustomFields
+      summary: Set Value for a Set of Agent or Custom Fields
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+            - visitorId: exampleVisitor
+              values:
+                field1: value
+                field2: value
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/schema/{kind}/{group}:
+    post:
+      operationId: createOrUndeleteAnAgentOrCustomField
+      summary: Create or Undelete an Agent or Custom Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+            - name: fieldName1
+              displayname: fieldName1
+              type: string
+            - name: fieldName2
+              displayname: fieldName2
+              type: number
+            - name: fieldName3
+              displayname: fieldName3
+              type: time
+            - name: fieldName4
+              displayname: fieldName4
+              type: boolean
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/schema/{kind}/{group}/{field}:
+    delete:
+      operationId: deleteAnAgentOrCustomField
+      summary: Delete an Agent or Custom Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: field
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/dependencies:
+    get:
+      operationId: getAListOfDependenciesForAllMetadataFields
+      summary: Get a List of Dependencies for All Metadata Fields
+      tags:
+      - Metadata
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/dependencies/{kind}/{group}/{fieldName}:
+    get:
+      operationId: getAListOfDependenciesForAMetadataField
+      summary: Get a List of Dependencies for a Metadata Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fieldName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

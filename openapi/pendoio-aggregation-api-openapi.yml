@@ -1,0 +1,104 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Aggregation API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Aggregation
+paths:
+  /api/v1/aggregation:
+    post:
+      operationId: visitors
+      summary: visitors
+      tags:
+      - Aggregation
+      requestBody:
+        content:
+          application/json:
+            examples:
+              default:
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: visitors source
+                    pipeline:
+                    - source:
+                        visitors: null
+              accounts:
+                summary: accounts
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: accounts source
+                    pipeline:
+                    - source:
+                        accounts: null
+              pages:
+                summary: pages
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: pages source
+                    pipeline:
+                    - source:
+                        pages: null
+              features:
+                summary: features
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: features source
+                    pipeline:
+                    - source:
+                        features: null
+              tracktypes:
+                summary: trackTypes
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: track types source
+                    pipeline:
+                    - source:
+                        trackTypes: null
+              donotprocessvisitors:
+                summary: doNotProcessVisitors
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: doNotProcessVisitors source
+                    pipeline:
+                    - source:
+                        doNotProcessVisitors: null
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

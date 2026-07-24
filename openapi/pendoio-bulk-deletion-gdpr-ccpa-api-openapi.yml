@@ -1,0 +1,88 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Bulk Deletion (GDPR/CCPA) API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Bulk Deletion (GDPR/CCPA)
+paths:
+  /api/v1/bulkdelete/visitor:
+    post:
+      operationId: bulkDeleteVisitors
+      summary: Bulk Delete Visitors
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      requestBody:
+        content:
+          application/json:
+            example:
+              visitors:
+              - visitorId
+              - visitorId2
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/bulkdelete/account:
+    post:
+      operationId: bulkDeleteAccounts
+      summary: Bulk Delete Accounts
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      requestBody:
+        content:
+          application/json:
+            example:
+              accounts:
+              - accountId
+              - accountId2
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/bulkdelete:
+    get:
+      operationId: getAllOutstandingBulkDeletionRequests
+      summary: Get all outstanding bulk deletion requests
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/bulkdelete/{id}:
+    get:
+      operationId: getOneBulkDeletionStatus
+      summary: Get one bulk deletion status
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

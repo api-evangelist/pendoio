@@ -1,0 +1,73 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Conversations API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Conversations
+paths:
+  /data/agentic:
+    post:
+      operationId: sendAConversationEvent
+      summary: Send a Conversation Event
+      tags:
+      - Conversations
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: prompt
+              visitor_id: exampleVisitor
+              account_id: exampleAccount
+              timestamp: 1769802954000
+              props:
+                agentId: 0MjY3pcq1FFxH3a5KBGKUoPvEIk
+                conversationId: conv_1765734044978_6erskba
+                messageId: message_from_api1
+                content: How do I export my usage data from the dashboard?
+                suggestedPrompt: false
+                toolsUsed:
+                - search
+                - knowledge_base
+                agentModelUsed:
+                - gpt-4
+                - claude-3
+                agentFilesUploaded:
+                - type: csv
+                  name: usage_report_q1.csv
+                agentUserReactionComments: []
+                agentSubagentsUsed:
+                - research_agent
+                agentInputTokenCount: 512
+                agentOutputTokenCount: 128
+              context:
+                ip: 76.253.187.23
+                userAgent: Chrome/65.0.3325.181
+                url: https://mypage.com/admin
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

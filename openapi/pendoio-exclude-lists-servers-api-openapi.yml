@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Exclude Lists & Servers API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Exclude Lists & Servers
+paths:
+  /api/v1/blacklist:
+    get:
+      operationId: getAllExcludedItems
+      summary: Get all excluded items
+      tags:
+      - Exclude Lists & Servers
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/blacklist/type/{type}:
+    get:
+      operationId: getAllExcludedItemsByType
+      summary: Get all excluded items by type
+      tags:
+      - Exclude Lists & Servers
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/servername:
+    get:
+      operationId: getAllServers
+      summary: Get all servers
+      tags:
+      - Exclude Lists & Servers
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/servername/{name}:
+    get:
+      operationId: getServerByName
+      summary: Get server by name
+      tags:
+      - Exclude Lists & Servers
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/servername/flag/{flagname}:
+    get:
+      operationId: getServerByFlagName
+      summary: Get server by flag name
+      tags:
+      - Exclude Lists & Servers
+      parameters:
+      - name: flagname
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys

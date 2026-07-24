@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage Account Visitor API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Visitor
+paths:
+  /api/v1/visitor/{visitorId}:
+    get:
+      operationId: getVisitorById
+      summary: Get Visitor by ID
+      tags:
+      - Visitor
+      parameters:
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/visitor/{b64_id}:
+    get:
+      operationId: getVisitorByBase64EncodedId
+      summary: Get Visitor by base64 encoded ID
+      tags:
+      - Visitor
+      parameters:
+      - name: b64_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/visitor/{visitorId}/history:
+    get:
+      operationId: getVisitorHistoryForATimePeriod
+      summary: Get Visitor History for a Time Period
+      tags:
+      - Visitor
+      parameters:
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys
