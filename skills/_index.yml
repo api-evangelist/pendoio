@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/pendoio-engage-openapi.yml
+skills:
+- file: pendoio-run-aggregation.md
+  name: Query product analytics with the Aggregation API
+  api: openapi/pendoio-engage-openapi.yml
+  operations: [verifyIntegrationKey, returnListOfAllPages, returnListOfAllFeatures, visitors]
+- file: pendoio-segment-and-target-guide.md
+  name: Build a segment and target an in-app guide
+  api: openapi/pendoio-engage-openapi.yml
+  operations: [createASegment, addAVisitorToASegment, returnListOfAllGuides, changeGuideSegment, changeGuideState]
+- file: pendoio-gdpr-erasure.md
+  name: Erase visitor data for GDPR/CCPA
+  api: openapi/pendoio-engage-openapi.yml
+  operations: [verifyIntegrationKey, bulkDeleteVisitors, getAllOutstandingBulkDeletionRequests, getOneBulkDeletionStatus]

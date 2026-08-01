@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://engageapi.pendo.io/, https://status.pendo.io/, https://web-sdk.pendo.io/versions
+versioning:
+  scheme: uri-path
+  current: v1
+  base_path: /api/v1
+  docs: https://engageapi.pendo.io/
+  notes: >-
+    The Engage API is versioned in the URI path (/api/v1). The Postman collection at
+    engageapi.pendo.io is the documented source of truth.
+release_notes:
+  url: https://web-sdk.pendo.io/versions
+  cadence: >-
+    New stable Web SDK versions promoted on Thursdays; hotfixes and beta releases
+    push more frequently.
+status_page: https://status.pendo.io/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal REST API deprecation policy or RFC 8594 Sunset/Deprecation header support was found.
+sla:
+  url: null
+deprecated_operations: []

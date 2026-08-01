@@ -1,0 +1,17 @@
+generated: '2026-07-20'
+method: searched
+source: https://web-sdk.pendo.io/versions, https://developers.pendo.io/agent-sdk-updates/
+scheme: web-sdk-semver
+current_version: 2.333.1
+cadence: >-
+  New stable Web SDK versions are promoted on Thursdays; hotfixes and beta releases
+  push more frequently (per the Engage API documentation).
+changelog_urls:
+- https://web-sdk.pendo.io/versions
+- https://developers.pendo.io/agent-sdk-updates/
+entries: []
+notes: >-
+  Pendo publishes a running Web SDK (agent) version feed and agent-SDK update notes
+  rather than a dated REST-API changelog. The current published @pendo/agent npm
+  version is 2.333.1. Individual dated entries were not captured verbatim (the
+  versions feed is a live listing); the changelog surfaces are recorded above.

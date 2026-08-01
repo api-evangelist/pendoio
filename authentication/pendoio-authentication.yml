@@ -1,0 +1,43 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/pendoio-engage-openapi.yml
+docs: https://app.pendo.io/admin/integrationkeys
+summary:
+  types:
+  - apiKey
+  - oauth2
+  api_key_in:
+  - header
+  oauth2_flows:
+  - authorizationCode
+  - clientCredentials
+schemes:
+- name: IntegrationKey
+  type: apiKey
+  in: header
+  parameter: x-pendo-integration-key
+  description: >-
+    Primary Engage API authentication. A per-subscription integration key created at
+    https://app.pendo.io/admin/integrationkeys, sent in the x-pendo-integration-key
+    request header. Verify a key with GET /api/v1/token/verify.
+  sources:
+  - openapi/pendoio-engage-openapi.yml
+- name: OAuth2
+  type: oauth2
+  description: >-
+    Pendo publishes RFC 8414 OAuth 2.0 Authorization Server metadata at
+    https://app.pendo.io/.well-known/oauth-authorization-server. Supports the
+    authorization_code (with PKCE S256), refresh_token, and client_credentials
+    grants, plus RFC 7591 Dynamic Client Registration.
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://app.pendo.io/oauth/authorize
+    tokenUrl: https://app.pendo.io/oauth/v1/token
+  - flow: clientCredentials
+    tokenUrl: https://app.pendo.io/oauth/v1/token
+  registration_endpoint: https://app.pendo.io/oauth/v1/register
+  userinfo_endpoint: https://app.pendo.io/oauth/v1/userinfo
+  code_challenge_methods_supported:
+  - S256
+  sources:
+  - well-known/pendoio-oauth-authorization-server.json

@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/pendoio-engage-openapi.yml
+notes: >-
+  No official hosted/remote Pendo MCP server was found (searched npm
+  @modelcontextprotocol scope, the Pendo developer portal, and MCP registries).
+  Pendo does expose a POST https://data.pendo.io/data/agentic endpoint ("Send a
+  Conversation Event") for agent/conversation telemetry, but that is not an MCP
+  server. The tool list below is a CANDIDATE derived from the Engage API operations
+  so an MCP wrapper could be generated; it is not a published Pendo product.
+server:
+  name: pendo
+  transport: http
+tools:
+- name: list_pages
+  description: Return the list of tagged Pages in the subscription
+  source_operation: openapi/pendoio-engage-openapi.yml#returnListOfAllPages
+- name: list_features
+  description: Return the list of tagged Features
+  source_operation: openapi/pendoio-engage-openapi.yml#returnListOfAllFeatures
+- name: list_guides
+  description: Return the list of Guides
+  source_operation: openapi/pendoio-engage-openapi.yml#returnListOfAllGuides
+- name: get_visitor
+  description: Get a single visitor by ID
+  source_operation: openapi/pendoio-engage-openapi.yml#getVisitorById
+- name: get_account
+  description: Get a single account by ID
+  source_operation: openapi/pendoio-engage-openapi.yml#getAccountById
+- name: list_segments
+  description: Get all shared (Everyone) segments
+  source_operation: openapi/pendoio-engage-openapi.yml#getAllSharedEveryoneSegments
+- name: run_aggregation
+  description: Run a structured MongoDB-like aggregation query over collected events
+  source_operation: openapi/pendoio-engage-openapi.yml#visitors
+- name: verify_key
+  description: Verify the integration key is valid
+  source_operation: openapi/pendoio-engage-openapi.yml#verifyIntegrationKey

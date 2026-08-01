@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+probe: true
+source: https://www.pendo.io/trust/
+url: https://trust.pendo.io/
+trust_page: https://www.pendo.io/trust/
+certifications:
+- SOC 2
+- HIPAA
+- TX-RAMP
+compliance:
+- GDPR
+- CCPA
+evidence:
+- source: https://www.pendo.io/trust/
+  quote: "Pendo observes key industry best practices and regulatory schemes to protect the security and privacy of our customers' data: SOC2, GDPR, TX-RAMP, and HIPAA."
+- source: https://trust.pendo.io/
+  status: 200
+  note: SafeBase-style trust center (JS SPA) reachable at trust.pendo.io
+notes: >-
+  Pendo publishes a customer-facing trust center at trust.pendo.io with a public
+  summary at www.pendo.io/trust/. Named posture: SOC 2, GDPR, TX-RAMP (Texas state
+  cloud risk program), and HIPAA. Privacy inquiries route to gdpr@pendo.io.

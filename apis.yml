@@ -1,22 +1,411 @@
 aid: pendoio
 name: Pendo.io
-description: Pendo.io is a company surfaced as a portfolio company of battery-ventures and added to the
-  API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Pendo is a product-experience and product-analytics platform that helps software
+  teams understand and guide how users engage with their applications. Its Engage API
+  provides programmatic access to the pages, features, guides, visitors, accounts,
+  segments, reports, and metadata collected by the Pendo agent, plus a MongoDB-like
+  Aggregation API for running structured queries over product-usage events. The API
+  authenticates with a per-subscription integration key sent in the
+  x-pendo-integration-key header (OAuth 2.0 is additionally published via RFC 8414
+  authorization-server metadata), and includes GDPR/CCPA bulk-deletion, segment
+  management, in-app guide targeting, and cloud Data Sync export. Pendo was surfaced
+  as a portfolio company of Battery Ventures.
 url: https://raw.githubusercontent.com/api-evangelist/pendoio/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - battery-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-public-api
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 2
+  pass: local-v1
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://www.pendo.io/favicon.ico
 tags:
 - Company
-apis: []
+- Product Analytics
+- Product Experience
+- Digital Adoption
+- User Analytics
+- In-App Guidance
+- Customer Feedback
+- SaaS
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: pendoio:pendoio-account-api
+  name: Pendo.io Account API
+  description: The Account API from Pendo.io — 2 operation(s) for account.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-account-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-admin-api
+  name: Pendo.io Admin API
+  description: The Admin API from Pendo.io — 1 operation(s) for admin.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-admin-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-aggregation-api
+  name: Pendo.io Aggregation API
+  description: The Aggregation API from Pendo.io — 1 operation(s) for aggregation.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Aggregation
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-aggregation-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-bulk-deletion-gdpr-ccpa-api
+  name: Pendo.io Bulk Deletion (GDPR/CCPA) API
+  description: >-
+    The Bulk Deletion (GDPR/CCPA) API from Pendo.io — 4 operation(s) for bulk deletion (gdpr/ccpa).
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Bulk Deletion (GDPR/CCPA)
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-bulk-deletion-gdpr-ccpa-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-conversations-api
+  name: Pendo.io Conversations API
+  description: The Conversations API from Pendo.io — 1 operation(s) for conversations.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Conversations
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-conversations-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-data-sync-api
+  name: Pendo.io Data Sync API
+  description: The Data Sync API from Pendo.io — 3 operation(s) for data sync.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Data Sync
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-data-sync-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-exclude-lists-servers-api
+  name: Pendo.io Exclude Lists & Servers API
+  description: >-
+    The Exclude Lists & Servers API from Pendo.io — 5 operation(s) for exclude lists & servers.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Exclude Lists & Servers
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-exclude-lists-servers-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-feature-api
+  name: Pendo.io Feature API
+  description: The Feature API from Pendo.io — 1 operation(s) for feature.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Feature
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-feature-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-guide-api
+  name: Pendo.io Guide API
+  description: The Guide API from Pendo.io — 12 operation(s) for guide.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Guide
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-guide-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-listen-api
+  name: Pendo.io Listen API
+  description: The Listen API from Pendo.io — 3 operation(s) for listen.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Listen
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-listen-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-metadata-api
+  name: Pendo.io Metadata API
+  description: The Metadata API from Pendo.io — 9 operation(s) for metadata.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Metadata
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-metadata-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-page-api
+  name: Pendo.io Page API
+  description: The Page API from Pendo.io — 1 operation(s) for page.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Page
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-page-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-report-api
+  name: Pendo.io Report API
+  description: The Report API from Pendo.io — 3 operation(s) for report.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Report
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-report-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-segment-api
+  name: Pendo.io Segment API
+  description: The Segment API from Pendo.io — 10 operation(s) for segment.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Segment
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-segment-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-track-api
+  name: Pendo.io Track API
+  description: The Track API from Pendo.io — 2 operation(s) for track.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Track
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-track-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+- aid: pendoio:pendoio-visitor-api
+  name: Pendo.io Visitor API
+  description: The Visitor API from Pendo.io — 3 operation(s) for visitor.
+  humanURL: https://engageapi.pendo.io/
+  baseURL: https://app.pendo.io/api/v1
+  tags:
+  - Visitor
+  properties:
+  - type: OpenAPI
+    url: openapi/pendoio-visitor-api-openapi.yml
+  - type: Authentication
+    url: authentication/pendoio-authentication.yml
+  - type: ErrorCatalog
+    url: errors/pendoio-problem-types.yml
+  - type: DataModel
+    url: data-model/pendoio-data-model.yml
+  - type: Conventions
+    url: conventions/pendoio-conventions.yml
+common:
+- type: DeveloperPortal
+  url: https://developers.pendo.io/
+- type: Documentation
+  url: https://engageapi.pendo.io/
+- type: APIReference
+  url: https://engageapi.pendo.io/
+- type: GettingStarted
+  url: https://academy.pendo.io/learn/courses/27/pendo-api-setup-and-endpoints
+- type: Support
+  url: https://support.pendo.io/hc/en-us
+- type: Blog
+  url: https://www.pendo.io/blog/
+- type: GitHubOrganization
+  url: https://github.com/pendo-io
+- type: Pricing
+  url: https://www.pendo.io/pricing/
+- type: SignUp
+  url: https://app.pendo.io/
+- type: TermsOfService
+  url: https://www.pendo.io/legal/terms-of-service/
+- type: PrivacyPolicy
+  url: https://www.pendo.io/legal/privacy-policy/
+- type: StatusPage
+  url: https://status.pendo.io/
+- type: Postman
+  url: https://engageapi.pendo.io/
+- type: Authentication
+  url: authentication/pendoio-authentication.yml
+- type: DomainSecurity
+  url: security/pendoio-domain-security.yml
+- type: TrustCenter
+  url: security/pendoio-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/pendoio-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.pendo.io/trust/
+- type: Compliance
+  url: https://www.pendo.io/trust/
+- type: AgenticAccess
+  url: agentic-access/pendoio-agentic-access.yml
+- type: Packages
+  url: packages/pendoio-packages.yml
+- type: SDKs
+  url: packages/pendoio-packages.yml
+- type: WellKnown
+  url: well-known/pendoio-well-known.yml
+- type: MCPServer
+  url: mcp/pendoio-mcp.yml
+- type: LLMsTxt
+  url: llms/pendoio-llms.txt
+- type: Conformance
+  url: conformance/pendoio-conformance.yml
+- type: Lifecycle
+  url: lifecycle/pendoio-lifecycle.yml
+- type: ChangeLog
+  url: changelog/pendoio-changelog.yml
+- type: DataModel
+  url: data-model/pendoio-data-model.yml
+- type: Conventions
+  url: conventions/pendoio-conventions.yml
+- type: ErrorCatalog
+  url: errors/pendoio-problem-types.yml
+- type: AgentSkill
+  url: skills/_index.yml

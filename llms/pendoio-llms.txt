@@ -1,0 +1,33 @@
+# Pendo.io
+
+> Pendo is a product-experience and product-analytics platform. Its Engage API gives programmatic access to the pages, features, guides, visitors, accounts, segments, reports, and metadata the Pendo agent collects, plus a MongoDB-like Aggregation API for structured event queries. Authentication uses a per-subscription integration key in the x-pendo-integration-key header (OAuth 2.0 is also published via RFC 8414 metadata).
+
+## APIs
+- [Engage API (docs)](https://engageapi.pendo.io/): REST API for pages, features, guides, visitors, accounts, segments, reports, metadata, and aggregations. Base URL https://app.pendo.io/api/v1.
+- [Feedback API](https://feedbackapi.pendo.io/): separate Postman collection for Pendo Feedback.
+- [Developer Portal](https://developers.pendo.io/): Pendo developer documentation and agent SDK updates.
+
+## Specs
+- [OpenAPI (Engage API)](openapi/pendoio-engage-openapi.yml): 3.0 spec derived from the public Pendo Postman collection (61 paths).
+
+## Auth & Security
+- [Authentication profile](authentication/pendoio-authentication.yml): integration-key header + OAuth 2.0 (authorization_code, client_credentials, PKCE).
+- [OAuth Authorization Server metadata](well-known/pendoio-oauth-authorization-server.json): RFC 8414.
+- [Domain security probe](security/pendoio-domain-security.yml)
+- [Agentic access profile](agentic-access/pendoio-agentic-access.yml)
+
+## Reference
+- [API conventions](conventions/pendoio-conventions.yml)
+- [Data model / ERD](data-model/pendoio-data-model.yml)
+- [Error semantics](errors/pendoio-problem-types.yml)
+- [Lifecycle & versioning](lifecycle/pendoio-lifecycle.yml)
+- [Conformance](conformance/pendoio-conformance.yml)
+- [Packages / SDKs](packages/pendoio-packages.yml): @pendo/agent (npm).
+- [Agent Skills](skills/_index.yml)
+
+## Docs & Support
+- [Status page](https://status.pendo.io/)
+- [Pricing](https://www.pendo.io/pricing/)
+- [Terms of Service](https://www.pendo.io/legal/terms-of-service/)
+- [Privacy Policy](https://www.pendo.io/legal/privacy-policy/)
+- [GitHub org](https://github.com/pendo-io)

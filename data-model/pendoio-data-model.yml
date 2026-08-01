@@ -1,0 +1,60 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/pendoio-engage-openapi.yml
+entities:
+- name: Visitor
+  id_field: visitorId
+  endpoints: [getVisitorById, getVisitorHistoryForATimePeriod]
+- name: Account
+  id_field: accountId
+  endpoints: [getAccountById]
+- name: Page
+  endpoints: [returnListOfAllPages]
+- name: Feature
+  endpoints: [returnListOfAllFeatures]
+- name: TrackType
+  endpoints: [returnAListOfAllTrackTypes, sendATrackEvent]
+- name: Guide
+  id_field: guideId
+  endpoints: [returnListOfAllGuides, changeGuideState, changeGuideSegment, getGuideOrder]
+- name: Segment
+  id_field: segmentId
+  endpoints: [getAllSharedEveryoneSegments, createASegment, updateASegment, deleteASegment]
+- name: Report
+  id_field: reportId
+  endpoints: [returnAListOfPublicReports, returnReportContentsAsArrayOfJsonObjects]
+- name: MetadataField
+  endpoints: [getAMetadataSchema, setValueForAnAgentOrCustomField, createOrUndeleteAnAgentOrCustomField]
+- name: Feedback
+  endpoints: [getFeedbackOptions, createNewFeedback, updateExistingFeedback, deleteFeedback]
+- name: BulkDeletionRequest
+  id_field: id
+  endpoints: [bulkDeleteVisitors, bulkDeleteAccounts, getOneBulkDeletionStatus]
+relationships:
+- from: Visitor
+  to: Account
+  type: belongs_to
+  via: accountId
+  notes: visitors roll up to accounts in Pendo's visitor/account model
+- from: Account
+  to: Visitor
+  type: has_many
+  via: accountId
+- from: Segment
+  to: Visitor
+  type: has_many
+  via: segmentId
+  notes: segments are dynamic/uploaded collections of visitors (addAVisitorToASegment)
+- from: Guide
+  to: Segment
+  type: belongs_to
+  via: segmentId
+  notes: guides are targeted to a segment (changeGuideSegment)
+- from: Page
+  to: Feature
+  type: has_many
+  notes: features are tagged within pages in the Pendo tagging model
+- from: TrackType
+  to: Visitor
+  type: has_many
+  notes: track events are attributed to visitors/accounts

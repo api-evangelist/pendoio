@@ -1,0 +1,21 @@
+generated: '2026-07-20'
+method: searched
+source: npm registry, PyPI
+packages:
+- language: javascript
+  registry: npm
+  name: "@pendo/agent"
+  url: https://www.npmjs.com/package/@pendo/agent
+  install: npm install @pendo/agent
+  version: 2.333.1
+  official: true
+  description: >-
+    Official Pendo package for customers who want to self-host the Pendo web SDK
+    (agent) on their own infrastructure.
+notes: >-
+  Pendo is primarily an in-app agent (web-sdk.pendo.io) and a REST Engage API rather
+  than a language-SDK-first platform. The one clearly first-party published client
+  library is @pendo/agent on npm. The PyPI project "pendo" is explicitly described
+  by its author as "An unofficial client for the Pendo API" and is NOT marked
+  official here. No first-party Pendo packages were found on Maven Central, NuGet,
+  pkg.go.dev, RubyGems, Packagist, or crates.io.

@@ -1,0 +1,27 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Pendo Engage API
+  version: 1.0.0
+extends: openapi/pendoio-engage-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+    x-apievangelist-auth: x-pendo-integration-key header; OAuth 2.0 via RFC 8414 metadata
+    x-apievangelist-status-page: https://status.pendo.io/
+    x-apievangelist-regions: [us, us1, eu, au, jp]
+- target: $.components.securitySchemes
+  update:
+    OAuth2:
+      type: oauth2
+      description: >-
+        Pendo OAuth 2.0 (RFC 8414 metadata at
+        https://app.pendo.io/.well-known/oauth-authorization-server).
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.pendo.io/oauth/authorize
+          tokenUrl: https://app.pendo.io/oauth/v1/token
+          scopes: {}
+        clientCredentials:
+          tokenUrl: https://app.pendo.io/oauth/v1/token
+          scopes: {}

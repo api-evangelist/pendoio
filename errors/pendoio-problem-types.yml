@@ -1,0 +1,30 @@
+generated: '2026-07-20'
+method: derived
+format: json
+source: openapi/pendoio-engage-openapi.yml, live probe of https://app.pendo.io/api/v1
+notes: >-
+  The Pendo Engage API documents happy-path (200) responses in its Postman collection
+  and does not publish an RFC 9457 problem+json schema or a numbered error registry.
+  The entries below are the standard HTTP status semantics that apply to the API;
+  a live unauthenticated request to /api/v1/metadata/schema/visitor returns 403.
+  This artifact is a minimal derivation, not a published Pendo error catalog.
+problems:
+- status: 400
+  title: Bad Request
+  detail: Malformed request body or invalid aggregation pipeline / query parameters.
+- status: 401
+  title: Unauthorized
+  detail: Missing or invalid integration key / OAuth token.
+- status: 403
+  title: Forbidden
+  detail: >-
+    Integration key lacks the required access level, or API access is not enabled
+    for the subscription's level of service. Observed on live unauthenticated calls.
+- status: 404
+  title: Not Found
+  detail: Referenced visitor, account, guide, segment, report, or metadata field does not exist.
+- status: 429
+  title: Too Many Requests
+  detail: Rate limit exceeded (no published numeric limit).
+- status: 500
+  title: Internal Server Error

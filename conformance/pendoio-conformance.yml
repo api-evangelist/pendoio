@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/pendoio-engage-openapi.yml, well-known/pendoio-oauth-authorization-server.json
+standards:
+- id: oauth2
+  conforms: true
+  evidence: >-
+    app.pendo.io publishes RFC 8414 OAuth 2.0 Authorization Server metadata with
+    authorization_code, refresh_token and client_credentials grants.
+- id: rfc8414-oauth-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200 with issuer + endpoints
+- id: rfc7591-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://app.pendo.io/oauth/v1/register advertised
+- id: pkce
+  conforms: true
+  evidence: code_challenge_methods_supported includes S256
+- id: oidc-discovery
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 (no OIDC discovery)
+- id: api-key-auth
+  conforms: true
+  evidence: primary Engage API auth is the x-pendo-integration-key header
+- id: gdpr-ccpa-erasure
+  conforms: true
+  evidence: >-
+    dedicated bulk-deletion endpoints (POST /api/v1/bulkdelete/visitor and
+    /account) implement GDPR/CCPA right-to-erasure workflows.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: no application/problem+json responses documented in the collection
+- id: fhir-r4
+  conforms: false
+- id: scim2
+  conforms: false
+- id: json-api
+  conforms: false

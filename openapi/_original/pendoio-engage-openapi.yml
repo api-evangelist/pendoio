@@ -1,0 +1,1221 @@
+openapi: 3.0.3
+info:
+  title: Pendo Engage API
+  description: Pendo's Engage API provides programmatic access to product analytics and in-app
+    guide data collected by the Pendo agent. It includes resource endpoints for pages, features,
+    track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful
+    Aggregation API that runs MongoDB-like structured queries over collected events. Authentication
+    uses a per-subscription integration key passed in the x-pendo-integration-key header.
+  version: v1
+  contact:
+    name: Pendo Developers
+    url: https://developers.pendo.io/
+  x-source: https://engageapi.pendo.io/ (public Postman collection 16265887/Tzm6jvKG)
+servers:
+- url: https://app.pendo.io
+  description: US (default)
+- url: https://us1.app.pendo.io
+  description: US1
+- url: https://app.eu.pendo.io
+  description: EU
+- url: https://app.au.pendo.io
+  description: AU/APAC
+- url: https://app.jpn.pendo.io
+  description: Japan
+security:
+- IntegrationKey: []
+tags:
+- name: Page
+- name: Feature
+- name: Track
+- name: Visitor
+- name: Account
+- name: Bulk Deletion (GDPR/CCPA)
+- name: Segment
+- name: Report
+- name: Guide
+- name: Metadata
+- name: Exclude Lists & Servers
+- name: Data Sync
+- name: Listen
+- name: Conversations
+- name: Admin
+- name: Aggregation
+paths:
+  /api/v1/page:
+    get:
+      operationId: returnListOfAllPages
+      summary: Return List of All Pages
+      tags:
+      - Page
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/feature:
+    get:
+      operationId: returnListOfAllFeatures
+      summary: Return List of All Features
+      tags:
+      - Feature
+      responses:
+        '200':
+          description: Successful response
+  /data/track:
+    post:
+      operationId: sendATrackEvent
+      summary: Send a Track Event
+      tags:
+      - Track
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: track
+              event: Registered
+              visitorId: unique-string-id
+              accountId: account-id-of-visitor
+              timestamp: 1680373680000
+              properties: {}
+              context:
+                ip: 76.253.187.23
+                userAgent: Mozilla/5.0
+                url: http://MuqrevujORTeLIzvMFcBSW.vitaO
+                title: My Page - Admin
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/tracktype:
+    get:
+      operationId: returnAListOfAllTrackTypes
+      summary: Return a List of All Track Types
+      tags:
+      - Track
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/visitor/{visitorId}:
+    get:
+      operationId: getVisitorById
+      summary: Get Visitor by ID
+      tags:
+      - Visitor
+      parameters:
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/visitor/{b64_id}:
+    get:
+      operationId: getVisitorByBase64EncodedId
+      summary: Get Visitor by base64 encoded ID
+      tags:
+      - Visitor
+      parameters:
+      - name: b64_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/visitor/{visitorId}/history:
+    get:
+      operationId: getVisitorHistoryForATimePeriod
+      summary: Get Visitor History for a Time Period
+      tags:
+      - Visitor
+      parameters:
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/account/{accountId}:
+    get:
+      operationId: getAccountById
+      summary: Get Account by ID
+      tags:
+      - Account
+      parameters:
+      - name: accountId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/account/{b64_id}:
+    get:
+      operationId: getAccountByBase64EncodedId
+      summary: Get Account by base64 encoded ID
+      tags:
+      - Account
+      parameters:
+      - name: b64_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/bulkdelete/visitor:
+    post:
+      operationId: bulkDeleteVisitors
+      summary: Bulk Delete Visitors
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      requestBody:
+        content:
+          application/json:
+            example:
+              visitors:
+              - visitorId
+              - visitorId2
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/bulkdelete/account:
+    post:
+      operationId: bulkDeleteAccounts
+      summary: Bulk Delete Accounts
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      requestBody:
+        content:
+          application/json:
+            example:
+              accounts:
+              - accountId
+              - accountId2
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/bulkdelete:
+    get:
+      operationId: getAllOutstandingBulkDeletionRequests
+      summary: Get all outstanding bulk deletion requests
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/bulkdelete/{id}:
+    get:
+      operationId: getOneBulkDeletionStatus
+      summary: Get one bulk deletion status
+      tags:
+      - Bulk Deletion (GDPR/CCPA)
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment:
+    get:
+      operationId: getAllSharedEveryoneSegments
+      summary: Get All Shared (Everyone) Segments
+      tags:
+      - Segment
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{id}:
+    get:
+      operationId: getSegmentBySegmentid
+      summary: Get Segment by segmentId
+      tags:
+      - Segment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitors:
+    post:
+      operationId: startExportOfSegmentVisitors
+      summary: Start export of segment visitors
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitors/{jobId}/status:
+    get:
+      operationId: checkSegmentExportStatus
+      summary: Check segment export status
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitors/{jobId}/results/{contentType}:
+    get:
+      operationId: retrieveSegmentExportResults
+      summary: Retrieve segment export results
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jobId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: contentType
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/upload:
+    post:
+      operationId: createASegment
+      summary: Create a segment
+      tags:
+      - Segment
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: EnterYourSegmentName
+              visitors:
+              - visitor1
+              - visitor2
+              - visitor3
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/status:
+    get:
+      operationId: getSegmentStatus
+      summary: Get segment status
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}:
+    put:
+      operationId: updateASegment
+      summary: Update a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: EnterYourSegmentName
+              visitors:
+              - visitor1
+              - visitor2
+              - visitor3
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: deleteASegment
+      summary: Delete a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitor/{visitorId}:
+    put:
+      operationId: addAVisitorToASegment
+      summary: Add a visitor to a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: removeAVisitorFromASegment
+      summary: Remove a visitor from a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/segment/{segmentId}/visitor:
+    patch:
+      operationId: addRemoveSmallBatchesOfVisitorsToASegment
+      summary: Add/remove small batches of visitors to a segment
+      tags:
+      - Segment
+      parameters:
+      - name: segmentId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              patch:
+              - op: add
+                path: /visitors
+                value:
+                - visitor3
+                - visitor4
+              - op: remove
+                path: /visitors
+                value:
+                - visitor1
+                - visitor2
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/report:
+    get:
+      operationId: returnAListOfPublicReports
+      summary: Return a List of Public Reports
+      tags:
+      - Report
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/report/{reportId}/results.json:
+    get:
+      operationId: returnReportContentsAsArrayOfJsonObjects
+      summary: Return Report Contents as Array of JSON Objects
+      tags:
+      - Report
+      parameters:
+      - name: reportId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/report/{reportId}/results.csv:
+    get:
+      operationId: returnReportContentsAsCsv
+      summary: Return Report Contents as CSV
+      tags:
+      - Report
+      parameters:
+      - name: reportId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide:
+    get:
+      operationId: returnListOfAllGuides
+      summary: Return List of All Guides
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/history:
+    get:
+      operationId: retrieveChangeHistoryForAGuide
+      summary: Retrieve Change History for a Guide
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/visitor/{visitorId}/reset:
+    post:
+      operationId: resetGuideSeenForSpecificVisitor
+      summary: Reset Guide Seen for Specific Visitor
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/all/visitor/{visitorId}/reset:
+    post:
+      operationId: resetGuideSeenForSpecificVisitorForAllGuides
+      summary: Reset Guide Seen for Specific Visitor for All Guides
+      tags:
+      - Guide
+      parameters:
+      - name: visitorId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/reset:
+    post:
+      operationId: resetIndividualStagedGuide
+      summary: Reset Individual Staged Guide
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/staged/reset:
+    post:
+      operationId: resetAllStagedGuides
+      summary: Reset All Staged Guides
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/experiment/export:
+    post:
+      operationId: exportGuideExperimentResults
+      summary: Export Guide Experiment Results
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/localization/export:
+    get:
+      operationId: bulkXliffExport
+      summary: Bulk XLIFF Export
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/localization/import:
+    post:
+      operationId: bulkXliffImport
+      summary: Bulk XLIFF Import
+      tags:
+      - Guide
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/order:
+    get:
+      operationId: getGuideOrder
+      summary: Get guide order
+      tags:
+      - Guide
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/segment:
+    put:
+      operationId: changeGuideSegment
+      summary: Change guide segment
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              segmentId: <value>
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/guide/{guideId}/state:
+    put:
+      operationId: changeGuideState
+      summary: Change guide state
+      tags:
+      - Guide
+      parameters:
+      - name: guideId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              state: <value>
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/schema/{kind}:
+    get:
+      operationId: getAMetadataSchema
+      summary: Get a Metadata Schema
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/{group}/value/{id}/{fieldName}:
+    get:
+      operationId: getValueOfAMetadataField
+      summary: Get Value of a Metadata Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fieldName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+    put:
+      operationId: setValueForAnAgentOrCustomField
+      summary: Set Value for an Agent or Custom Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fieldName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json: {}
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/pendo/value/{id}/blacklistguides:
+    put:
+      operationId: optOutAVisitorOrAccountFromAllGuideDisplay
+      summary: Opt-out a Visitor or Account From All Guide Display
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example: true
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/pendo/value/{id}/donotprocess:
+    put:
+      operationId: optOutOrDoNotProcessAVisitorOrAccount
+      summary: Opt-Out or Do Not Process a Visitor or Account
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example: true
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/{kind}/{group}/value:
+    post:
+      operationId: setValueForASetOfAgentOrCustomFields
+      summary: Set Value for a Set of Agent or Custom Fields
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+            - visitorId: exampleVisitor
+              values:
+                field1: value
+                field2: value
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/schema/{kind}/{group}:
+    post:
+      operationId: createOrUndeleteAnAgentOrCustomField
+      summary: Create or Undelete an Agent or Custom Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+            - name: fieldName1
+              displayname: fieldName1
+              type: string
+            - name: fieldName2
+              displayname: fieldName2
+              type: number
+            - name: fieldName3
+              displayname: fieldName3
+              type: time
+            - name: fieldName4
+              displayname: fieldName4
+              type: boolean
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/schema/{kind}/{group}/{field}:
+    delete:
+      operationId: deleteAnAgentOrCustomField
+      summary: Delete an Agent or Custom Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: field
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/dependencies:
+    get:
+      operationId: getAListOfDependenciesForAllMetadataFields
+      summary: Get a List of Dependencies for All Metadata Fields
+      tags:
+      - Metadata
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/metadata/dependencies/{kind}/{group}/{fieldName}:
+    get:
+      operationId: getAListOfDependenciesForAMetadataField
+      summary: Get a List of Dependencies for a Metadata Field
+      tags:
+      - Metadata
+      parameters:
+      - name: kind
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: group
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: fieldName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/blacklist:
+    get:
+      operationId: getAllExcludedItems
+      summary: Get all excluded items
+      tags:
+      - Exclude Lists & Servers
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/blacklist/type/{type}:
+    get:
+      operationId: getAllExcludedItemsByType
+      summary: Get all excluded items by type
+      tags:
+      - Exclude Lists & Servers
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/servername:
+    get:
+      operationId: getAllServers
+      summary: Get all servers
+      tags:
+      - Exclude Lists & Servers
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/servername/{name}:
+    get:
+      operationId: getServerByName
+      summary: Get server by name
+      tags:
+      - Exclude Lists & Servers
+      parameters:
+      - name: name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/servername/flag/{flagname}:
+    get:
+      operationId: getServerByFlagName
+      summary: Get server by flag name
+      tags:
+      - Exclude Lists & Servers
+      parameters:
+      - name: flagname
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/datasync/storageTypes/gcs/destinations/Default/credentials:
+    put:
+      operationId: rotateCredentialsForGcsDestination
+      summary: Rotate Credentials for GCS Destination
+      tags:
+      - Data Sync
+      requestBody:
+        content:
+          application/json:
+            example:
+              serviceAccount: service-account@test-env.iam.gserviceaccount.com
+              secretKey: <secretKey>
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/datasync/storageTypes/s3/destinations/Default/credentials:
+    put:
+      operationId: rotateCredentialsForS3Destination
+      summary: Rotate Credentials for S3 Destination
+      tags:
+      - Data Sync
+      requestBody:
+        content:
+          application/json:
+            example:
+              accessKeyId: AKIAkjvafvafd
+              secretAccessKey: <secretAccessKey>
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/datasync/storageTypes/azure/destinations/Default/credentials:
+    put:
+      operationId: rotateCredentialsForAzureDestination
+      summary: Rotate Credentials for Azure Destination
+      tags:
+      - Data Sync
+      requestBody:
+        content:
+          application/json:
+            example:
+              clientId: 0b501e7e-feed-da1e-iced-c0ffee000000
+              clientSecret: <clientSecret>
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/feedback/options:
+    get:
+      operationId: getFeedbackOptions
+      summary: Get feedback options
+      tags:
+      - Listen
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/feedback:
+    post:
+      operationId: createNewFeedback
+      summary: Create new feedback
+      tags:
+      - Listen
+      requestBody:
+        content:
+          application/json:
+            example:
+              accountId: exampleAccount
+              visitorId: exampleVisitor
+              createdById: anotherVisitor
+              createdAt: 1746194289860
+              title: This is the title
+              description: This is a more verbose description of the feedback.
+              appIds:
+              - -323232
+              labels:
+              - name: Admin
+                category: Role
+              - name: label
+              importance: 2
+              productAreas:
+              - _PENDO_DEFAULTGROUP_00_
+              linksData:
+              - title: Pendo
+                linkUrl: https://app.pendo.io
+      responses:
+        '200':
+          description: Successful response
+    delete:
+      operationId: deleteFeedback
+      summary: Delete feedback
+      tags:
+      - Listen
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/feedback/{id}:
+    patch:
+      operationId: updateExistingFeedback
+      summary: Update existing feedback
+      tags:
+      - Listen
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              title: This is a brand new title
+              description: This is the same piece of feedback in the previous Create New Feedback
+                example, but with updated title, creator, description, labels, and importance.
+              labels:
+              - name: newlabel
+                category: newcategory
+              - name: existinglabel1
+              - name: existinglabel2
+                category: existingcategory1
+              importance: -1
+              createdBy: AgathaHarkness
+              createdAt: 1746194980796
+      responses:
+        '200':
+          description: Successful response
+  /data/agentic:
+    post:
+      operationId: sendAConversationEvent
+      summary: Send a Conversation Event
+      tags:
+      - Conversations
+      requestBody:
+        content:
+          application/json:
+            example:
+              type: prompt
+              visitor_id: exampleVisitor
+              account_id: exampleAccount
+              timestamp: 1769802954000
+              props:
+                agentId: 0MjY3pcq1FFxH3a5KBGKUoPvEIk
+                conversationId: conv_1765734044978_6erskba
+                messageId: message_from_api1
+                content: How do I export my usage data from the dashboard?
+                suggestedPrompt: false
+                toolsUsed:
+                - search
+                - knowledge_base
+                agentModelUsed:
+                - gpt-4
+                - claude-3
+                agentFilesUploaded:
+                - type: csv
+                  name: usage_report_q1.csv
+                agentUserReactionComments: []
+                agentSubagentsUsed:
+                - research_agent
+                agentInputTokenCount: 512
+                agentOutputTokenCount: 128
+              context:
+                ip: 76.253.187.23
+                userAgent: Chrome/65.0.3325.181
+                url: https://mypage.com/admin
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/token/verify:
+    get:
+      operationId: verifyIntegrationKey
+      summary: Verify integration key
+      tags:
+      - Admin
+      responses:
+        '200':
+          description: Successful response
+  /api/v1/aggregation:
+    post:
+      operationId: visitors
+      summary: visitors
+      tags:
+      - Aggregation
+      requestBody:
+        content:
+          application/json:
+            examples:
+              default:
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: visitors source
+                    pipeline:
+                    - source:
+                        visitors: null
+              accounts:
+                summary: accounts
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: accounts source
+                    pipeline:
+                    - source:
+                        accounts: null
+              pages:
+                summary: pages
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: pages source
+                    pipeline:
+                    - source:
+                        pages: null
+              features:
+                summary: features
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: features source
+                    pipeline:
+                    - source:
+                        features: null
+              tracktypes:
+                summary: trackTypes
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: track types source
+                    pipeline:
+                    - source:
+                        trackTypes: null
+              donotprocessvisitors:
+                summary: doNotProcessVisitors
+                value:
+                  response:
+                    mimeType: application/json
+                  request:
+                    name: doNotProcessVisitors source
+                    pipeline:
+                    - source:
+                        doNotProcessVisitors: null
+      responses:
+        '200':
+          description: Successful response
+components:
+  securitySchemes:
+    IntegrationKey:
+      type: apiKey
+      in: header
+      name: x-pendo-integration-key
+      description: Pendo integration key, created at https://app.pendo.io/admin/integrationkeys
