@@ -1,0 +1,289 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pendo Engage Account Metadata API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-pendo-integration-key",
+      "value": "{{x-pendo-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Metadata",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a Metadata Schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/metadata/schema/:kind",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Metadata Schema"
+        },
+        {
+          "info": {
+            "name": "Get Value of a Metadata Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/metadata/:kind/:group/value/:id/:fieldName",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Value of a Metadata Field"
+        },
+        {
+          "info": {
+            "name": "Set Value for an Agent or Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.pendo.io/api/v1/metadata/:kind/:group/value/:id/:fieldName",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Value for an Agent or Custom Field"
+        },
+        {
+          "info": {
+            "name": "Opt-out a Visitor or Account From All Guide Display",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.pendo.io/api/v1/metadata/:kind/pendo/value/:id/blacklistguides",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Opt-out a Visitor or Account From All Guide Display"
+        },
+        {
+          "info": {
+            "name": "Opt-Out or Do Not Process a Visitor or Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.pendo.io/api/v1/metadata/:kind/pendo/value/:id/donotprocess",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Opt-Out or Do Not Process a Visitor or Account"
+        },
+        {
+          "info": {
+            "name": "Set Value for a Set of Agent or Custom Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/metadata/:kind/:group/value",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set Value for a Set of Agent or Custom Fields"
+        },
+        {
+          "info": {
+            "name": "Create or Undelete an Agent or Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/metadata/schema/:kind/:group",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or Undelete an Agent or Custom Field"
+        },
+        {
+          "info": {
+            "name": "Delete an Agent or Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.pendo.io/api/v1/metadata/schema/:kind/:group/:field",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "field",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an Agent or Custom Field"
+        },
+        {
+          "info": {
+            "name": "Get a List of Dependencies for All Metadata Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/metadata/dependencies"
+          },
+          "docs": "Get a List of Dependencies for All Metadata Fields"
+        },
+        {
+          "info": {
+            "name": "Get a List of Dependencies for a Metadata Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/metadata/dependencies/:kind/:group/:fieldName",
+            "params": [
+              {
+                "name": "kind",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "group",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a List of Dependencies for a Metadata Field"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

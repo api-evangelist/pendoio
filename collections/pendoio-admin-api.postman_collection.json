@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "9e3d0c33-a753-47a3-86c3-661e05b1bbfc",
+      "name": "Admin",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "808373db-48aa-4af5-aea1-a0fe2d9f3ce1",
+          "name": "Verify integration key",
+          "request": {
+            "name": "Verify integration key",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "token",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "848038c3-78ab-4737-83a2-8bc17136500a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "token",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.pendo.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-pendo-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "57fe4a3a-e80b-4c47-8ac7-66207d8a7582",
+    "name": "Pendo Engage Account Admin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.\n\nContact Support:\n Name: Pendo Developers",
+      "type": "text/plain"
+    }
+  }
+}

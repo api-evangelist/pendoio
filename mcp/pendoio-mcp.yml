@@ -2,13 +2,11 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/pendoio-engage-openapi.yml
-notes: >-
-  No official hosted/remote Pendo MCP server was found (searched npm
-  @modelcontextprotocol scope, the Pendo developer portal, and MCP registries).
-  Pendo does expose a POST https://data.pendo.io/data/agentic endpoint ("Send a
-  Conversation Event") for agent/conversation telemetry, but that is not an MCP
-  server. The tool list below is a CANDIDATE derived from the Engage API operations
-  so an MCP wrapper could be generated; it is not a published Pendo product.
+notes: No official hosted/remote Pendo MCP server was found (searched npm @modelcontextprotocol scope,
+  the Pendo developer portal, and MCP registries). Pendo does expose a POST https://data.pendo.io/data/agentic
+  endpoint ("Send a Conversation Event") for agent/conversation telemetry, but that is not an MCP server.
+  The tool list below is a CANDIDATE derived from the Engage API operations so an MCP wrapper could be
+  generated; it is not a published Pendo product.
 server:
   name: pendo
   transport: http
@@ -37,3 +35,9 @@ tools:
 - name: verify_key
   description: Verify the integration key is valid
   source_operation: openapi/pendoio-engage-openapi.yml#verifyIntegrationKey
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census

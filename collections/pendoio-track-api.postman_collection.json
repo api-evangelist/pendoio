@@ -1,0 +1,208 @@
+{
+  "item": [
+    {
+      "id": "e352cb07-2fed-4486-8acd-f21403145f85",
+      "name": "Track",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ddff8a40-d220-44c8-aa70-5149755a3f06",
+          "name": "Send a Track Event",
+          "request": {
+            "name": "Send a Track Event",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "track"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"track\",\n  \"event\": \"Registered\",\n  \"visitorId\": \"unique-string-id\",\n  \"accountId\": \"account-id-of-visitor\",\n  \"timestamp\": 1680373680000,\n  \"properties\": {},\n  \"context\": {\n    \"ip\": \"76.253.187.23\",\n    \"userAgent\": \"Mozilla/5.0\",\n    \"url\": \"http://MuqrevujORTeLIzvMFcBSW.vitaO\",\n    \"title\": \"My Page - Admin\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7dd1b300-01ee-461d-b87f-65925d5c2c87",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "track"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"track\",\n  \"event\": \"Registered\",\n  \"visitorId\": \"unique-string-id\",\n  \"accountId\": \"account-id-of-visitor\",\n  \"timestamp\": 1680373680000,\n  \"properties\": {},\n  \"context\": {\n    \"ip\": \"76.253.187.23\",\n    \"userAgent\": \"Mozilla/5.0\",\n    \"url\": \"http://MuqrevujORTeLIzvMFcBSW.vitaO\",\n    \"title\": \"My Page - Admin\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81173e8d-d44f-4811-9e49-4914f73362d4",
+          "name": "Return a List of All Track Types",
+          "request": {
+            "name": "Return a List of All Track Types",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "tracktype"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2f36c14-2a23-44e8-81a1-fe5449379a77",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "tracktype"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.pendo.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-pendo-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4f72f455-c918-4fdc-ae88-a91340a991b4",
+    "name": "Pendo Engage Account Track API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.\n\nContact Support:\n Name: Pendo Developers",
+      "type": "text/plain"
+    }
+  }
+}

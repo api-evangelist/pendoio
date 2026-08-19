@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "0aaf4441-8512-4fec-ace0-13c05b409a5a",
+      "name": "Aggregation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1225ac5-7f3d-4fe7-b1d2-a73ef5220c82",
+          "name": "visitors",
+          "request": {
+            "name": "visitors",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "aggregation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"response\": {\n    \"mimeType\": \"application/json\"\n  },\n  \"request\": {\n    \"name\": \"visitors source\",\n    \"pipeline\": [\n      {\n        \"source\": {\n          \"visitors\": null\n        }\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2f8e4032-0e4c-4c48-bf8c-c41746f85096",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "aggregation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"response\": {\n    \"mimeType\": \"application/json\"\n  },\n  \"request\": {\n    \"name\": \"visitors source\",\n    \"pipeline\": [\n      {\n        \"source\": {\n          \"visitors\": null\n        }\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.pendo.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-pendo-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "35ecbaa5-3918-435c-8917-e09ad4ba3771",
+    "name": "Pendo Engage Account Aggregation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.\n\nContact Support:\n Name: Pendo Developers",
+      "type": "text/plain"
+    }
+  }
+}

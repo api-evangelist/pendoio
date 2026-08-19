@@ -1,0 +1,391 @@
+{
+  "item": [
+    {
+      "id": "ff708150-7bc5-403b-8005-a5508eb7a287",
+      "name": "Listen",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "25221991-1173-44a1-8bd8-a0741c897e6d",
+          "name": "Get feedback options",
+          "request": {
+            "name": "Get feedback options",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "feedback",
+                "options"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3cd76cff-eeea-4ced-9f6d-cbec86f2b417",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "feedback",
+                    "options"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3b0a6fc-36ec-4818-9078-a878882d161a",
+          "name": "Create new feedback",
+          "request": {
+            "name": "Create new feedback",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"exampleAccount\",\n  \"visitorId\": \"exampleVisitor\",\n  \"createdById\": \"anotherVisitor\",\n  \"createdAt\": 1746194289860,\n  \"title\": \"This is the title\",\n  \"description\": \"This is a more verbose description of the feedback.\",\n  \"appIds\": [\n    -323232\n  ],\n  \"labels\": [\n    {\n      \"name\": \"Admin\",\n      \"category\": \"Role\"\n    },\n    {\n      \"name\": \"label\"\n    }\n  ],\n  \"importance\": 2,\n  \"productAreas\": [\n    \"_PENDO_DEFAULTGROUP_00_\"\n  ],\n  \"linksData\": [\n    {\n      \"title\": \"Pendo\",\n      \"linkUrl\": \"https://app.pendo.io\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "17ea875b-9fb8-4da7-b86d-1432be141285",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"exampleAccount\",\n  \"visitorId\": \"exampleVisitor\",\n  \"createdById\": \"anotherVisitor\",\n  \"createdAt\": 1746194289860,\n  \"title\": \"This is the title\",\n  \"description\": \"This is a more verbose description of the feedback.\",\n  \"appIds\": [\n    -323232\n  ],\n  \"labels\": [\n    {\n      \"name\": \"Admin\",\n      \"category\": \"Role\"\n    },\n    {\n      \"name\": \"label\"\n    }\n  ],\n  \"importance\": 2,\n  \"productAreas\": [\n    \"_PENDO_DEFAULTGROUP_00_\"\n  ],\n  \"linksData\": [\n    {\n      \"title\": \"Pendo\",\n      \"linkUrl\": \"https://app.pendo.io\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4a1432c-f9d3-4777-807d-1a38fa5e9024",
+          "name": "Delete feedback",
+          "request": {
+            "name": "Delete feedback",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "feedback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a952c0f3-ff86-4b18-924d-2742bfb1e9e9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "feedback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14f5ce9a-078c-4988-931a-d71076bb8787",
+          "name": "Update existing feedback",
+          "request": {
+            "name": "Update existing feedback",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "feedback",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"This is a brand new title\",\n  \"description\": \"This is the same piece of feedback in the previous Create New Feedback example, but with updated title, creator, description, labels, and importance.\",\n  \"labels\": [\n    {\n      \"name\": \"newlabel\",\n      \"category\": \"newcategory\"\n    },\n    {\n      \"name\": \"existinglabel1\"\n    },\n    {\n      \"name\": \"existinglabel2\",\n      \"category\": \"existingcategory1\"\n    }\n  ],\n  \"importance\": -1,\n  \"createdBy\": \"AgathaHarkness\",\n  \"createdAt\": 1746194980796\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b6e7b6e9-776a-4519-80aa-976fa4f06f85",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "feedback",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"This is a brand new title\",\n  \"description\": \"This is the same piece of feedback in the previous Create New Feedback example, but with updated title, creator, description, labels, and importance.\",\n  \"labels\": [\n    {\n      \"name\": \"newlabel\",\n      \"category\": \"newcategory\"\n    },\n    {\n      \"name\": \"existinglabel1\"\n    },\n    {\n      \"name\": \"existinglabel2\",\n      \"category\": \"existingcategory1\"\n    }\n  ],\n  \"importance\": -1,\n  \"createdBy\": \"AgathaHarkness\",\n  \"createdAt\": 1746194980796\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.pendo.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-pendo-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0711ed6b-f899-4e41-98dc-26e7353c4a85",
+    "name": "Pendo Engage Account Listen API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.\n\nContact Support:\n Name: Pendo Developers",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pendo Engage Account Segment API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-pendo-integration-key",
+      "value": "{{x-pendo-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Segment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Shared (Everyone) Segments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/segment"
+          },
+          "docs": "Get All Shared (Everyone) Segments"
+        },
+        {
+          "info": {
+            "name": "Get Segment by segmentId",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/segment/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Segment by segmentId"
+        },
+        {
+          "info": {
+            "name": "Start export of segment visitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId/visitors",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Start export of segment visitors"
+        },
+        {
+          "info": {
+            "name": "Check segment export status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId/visitors/:jobId/status",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Check segment export status"
+        },
+        {
+          "info": {
+            "name": "Retrieve segment export results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId/visitors/:jobId/results/:contentType",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "contentType",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve segment export results"
+        },
+        {
+          "info": {
+            "name": "Create a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/segment/upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a segment"
+        },
+        {
+          "info": {
+            "name": "Get segment status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId/status",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get segment status"
+        },
+        {
+          "info": {
+            "name": "Update a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a segment"
+        },
+        {
+          "info": {
+            "name": "Delete a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a segment"
+        },
+        {
+          "info": {
+            "name": "Add a visitor to a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId/visitor/:visitorId",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add a visitor to a segment"
+        },
+        {
+          "info": {
+            "name": "Remove a visitor from a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId/visitor/:visitorId",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a visitor from a segment"
+        },
+        {
+          "info": {
+            "name": "Add/remove small batches of visitors to a segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.pendo.io/api/v1/segment/:segmentId/visitor",
+            "params": [
+              {
+                "name": "segmentId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add/remove small batches of visitors to a segment"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

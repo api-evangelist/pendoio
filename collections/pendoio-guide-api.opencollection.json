@@ -1,0 +1,224 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pendo Engage Account Guide API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-pendo-integration-key",
+      "value": "{{x-pendo-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Guide",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Return List of All Guides",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/guide"
+          },
+          "docs": "Return List of All Guides"
+        },
+        {
+          "info": {
+            "name": "Retrieve Change History for a Guide",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/guide/:guideId/history",
+            "params": [
+              {
+                "name": "guideId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve Change History for a Guide"
+        },
+        {
+          "info": {
+            "name": "Reset Guide Seen for Specific Visitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/guide/:guideId/visitor/:visitorId/reset",
+            "params": [
+              {
+                "name": "guideId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset Guide Seen for Specific Visitor"
+        },
+        {
+          "info": {
+            "name": "Reset Guide Seen for Specific Visitor for All Guides",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/guide/all/visitor/:visitorId/reset",
+            "params": [
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset Guide Seen for Specific Visitor for All Guides"
+        },
+        {
+          "info": {
+            "name": "Reset Individual Staged Guide",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/guide/:guideId/reset",
+            "params": [
+              {
+                "name": "guideId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reset Individual Staged Guide"
+        },
+        {
+          "info": {
+            "name": "Reset All Staged Guides",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/guide/staged/reset"
+          },
+          "docs": "Reset All Staged Guides"
+        },
+        {
+          "info": {
+            "name": "Export Guide Experiment Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/guide/:guideId/experiment/export",
+            "params": [
+              {
+                "name": "guideId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export Guide Experiment Results"
+        },
+        {
+          "info": {
+            "name": "Bulk XLIFF Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/guide/localization/export"
+          },
+          "docs": "Bulk XLIFF Export"
+        },
+        {
+          "info": {
+            "name": "Bulk XLIFF Import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/api/v1/guide/localization/import",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Bulk XLIFF Import"
+        },
+        {
+          "info": {
+            "name": "Get guide order",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/guide/order"
+          },
+          "docs": "Get guide order"
+        },
+        {
+          "info": {
+            "name": "Change guide segment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.pendo.io/api/v1/guide/:guideId/segment",
+            "params": [
+              {
+                "name": "guideId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change guide segment"
+        },
+        {
+          "info": {
+            "name": "Change guide state",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.pendo.io/api/v1/guide/:guideId/state",
+            "params": [
+              {
+                "name": "guideId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Change guide state"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

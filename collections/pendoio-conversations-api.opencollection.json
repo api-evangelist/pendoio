@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pendo Engage Account Conversations API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-pendo-integration-key",
+      "value": "{{x-pendo-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a Conversation Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.pendo.io/data/agentic",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a Conversation Event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

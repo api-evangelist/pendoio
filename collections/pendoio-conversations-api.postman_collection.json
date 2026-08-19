@@ -1,0 +1,139 @@
+{
+  "item": [
+    {
+      "id": "d9be7824-bacc-4367-8deb-5a350fc6a697",
+      "name": "Conversations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "85b3ba83-b4a1-4dde-95ef-a3371b3291df",
+          "name": "Send a Conversation Event",
+          "request": {
+            "name": "Send a Conversation Event",
+            "description": {},
+            "url": {
+              "path": [
+                "data",
+                "agentic"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"prompt\",\n  \"visitor_id\": \"exampleVisitor\",\n  \"account_id\": \"exampleAccount\",\n  \"timestamp\": 1769802954000,\n  \"props\": {\n    \"agentId\": \"0MjY3pcq1FFxH3a5KBGKUoPvEIk\",\n    \"conversationId\": \"conv_1765734044978_6erskba\",\n    \"messageId\": \"message_from_api1\",\n    \"content\": \"How do I export my usage data from the dashboard?\",\n    \"suggestedPrompt\": false,\n    \"toolsUsed\": [\n      \"search\",\n      \"knowledge_base\"\n    ],\n    \"agentModelUsed\": [\n      \"gpt-4\",\n      \"claude-3\"\n    ],\n    \"agentFilesUploaded\": [\n      {\n        \"type\": \"csv\",\n        \"name\": \"usage_report_q1.csv\"\n      }\n    ],\n    \"agentUserReactionComments\": [],\n    \"agentSubagentsUsed\": [\n      \"research_agent\"\n    ],\n    \"agentInputTokenCount\": 512,\n    \"agentOutputTokenCount\": 128\n  },\n  \"context\": {\n    \"ip\": \"76.253.187.23\",\n    \"userAgent\": \"Chrome/65.0.3325.181\",\n    \"url\": \"https://mypage.com/admin\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ff78594-e394-42c7-8858-d81068d8533a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "data",
+                    "agentic"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "x-pendo-integration-key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"prompt\",\n  \"visitor_id\": \"exampleVisitor\",\n  \"account_id\": \"exampleAccount\",\n  \"timestamp\": 1769802954000,\n  \"props\": {\n    \"agentId\": \"0MjY3pcq1FFxH3a5KBGKUoPvEIk\",\n    \"conversationId\": \"conv_1765734044978_6erskba\",\n    \"messageId\": \"message_from_api1\",\n    \"content\": \"How do I export my usage data from the dashboard?\",\n    \"suggestedPrompt\": false,\n    \"toolsUsed\": [\n      \"search\",\n      \"knowledge_base\"\n    ],\n    \"agentModelUsed\": [\n      \"gpt-4\",\n      \"claude-3\"\n    ],\n    \"agentFilesUploaded\": [\n      {\n        \"type\": \"csv\",\n        \"name\": \"usage_report_q1.csv\"\n      }\n    ],\n    \"agentUserReactionComments\": [],\n    \"agentSubagentsUsed\": [\n      \"research_agent\"\n    ],\n    \"agentInputTokenCount\": 512,\n    \"agentOutputTokenCount\": 128\n  },\n  \"context\": {\n    \"ip\": \"76.253.187.23\",\n    \"userAgent\": \"Chrome/65.0.3325.181\",\n    \"url\": \"https://mypage.com/admin\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.pendo.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "x-pendo-integration-key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d853fa89-70d0-4607-91e3-9d3d30b9d441",
+    "name": "Pendo Engage Account Conversations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Pendo's Engage API provides programmatic access to product analytics and in-app guide data collected by the Pendo agent. It includes resource endpoints for pages, features, track events, guides, visitors, accounts, segments, reports, and metadata, plus a powerful Aggregation API that runs MongoDB-like structured queries over collected events. Authentication uses a per-subscription integration key passed in the x-pendo-integration-key header.\n\nContact Support:\n Name: Pendo Developers",
+      "type": "text/plain"
+    }
+  }
+}

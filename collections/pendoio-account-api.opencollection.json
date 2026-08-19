@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pendo Engage Account API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-pendo-integration-key",
+      "value": "{{x-pendo-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Account by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/account/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Account by ID"
+        },
+        {
+          "info": {
+            "name": "Get Account by base64 encoded ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/account/:b64_id",
+            "params": [
+              {
+                "name": "b64_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Account by base64 encoded ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

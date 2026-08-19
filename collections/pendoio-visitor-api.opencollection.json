@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Pendo Engage Account Visitor API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "x-pendo-integration-key",
+      "value": "{{x-pendo-integration-key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visitor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Visitor by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/visitor/:visitorId",
+            "params": [
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Visitor by ID"
+        },
+        {
+          "info": {
+            "name": "Get Visitor by base64 encoded ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/visitor/:b64_id",
+            "params": [
+              {
+                "name": "b64_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Visitor by base64 encoded ID"
+        },
+        {
+          "info": {
+            "name": "Get Visitor History for a Time Period",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.pendo.io/api/v1/visitor/:visitorId/history",
+            "params": [
+              {
+                "name": "visitorId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Visitor History for a Time Period"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
