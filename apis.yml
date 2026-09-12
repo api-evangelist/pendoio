@@ -366,6 +366,8 @@ apis:
   - type: Conventions
     url: conventions/pendoio-conventions.yml
 common:
+- type: Website
+  url: https://www.pendo.io/
 - type: Overlay
   url: overlays/pendoio-engage-overlay.yaml
 - type: DeveloperPortal
