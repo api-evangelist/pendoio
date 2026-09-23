@@ -1,0 +1,33 @@
+# Front Door AI Index — pendoio — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: pendoio
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.pendo.io
+  final_host: www.pendo.io
+  ownership: shared
+  owner: pendo
+  shares_host_with:
+  - pendo
+  inherited_from: null
+  verdict: scored
+  score: null
+  host_score: 30
+  density: null
+  words: 1719
+  tiers:
+    agentic: 12
+    core: 17
+    model: 1
+  ambiguous: 28
+  top_terms:
+    agent: 28
+    AI: 17
+    MCP: 5
+    AI agent: 4
+    Claude: 1
+    conversational AI: 1
+    embedding: 1
+    prompts: 1
