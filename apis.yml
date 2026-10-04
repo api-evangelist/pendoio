@@ -366,6 +366,9 @@ apis:
   - type: Conventions
     url: conventions/pendoio-conventions.yml
 common:
+- type: CapabilityMap
+  url: capabilities/pendoio-capability-edges.yml
+  name: Pendo.io Business Capability Map
 - type: Website
   url: https://www.pendo.io/
 - type: Overlay

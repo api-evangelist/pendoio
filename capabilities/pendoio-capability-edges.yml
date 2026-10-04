@@ -1,0 +1,45 @@
+slug: pendoio
+provider: Pendo.io
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Track
+  spec_file: pendoio-track-api-openapi.yml
+  capability_id: BC-4280.10
+  capability_id_l1: BC-4280
+  capability_name: Product Telemetry Instrumentation
+  confidence: 0.8
+  evidence: POST /data/track sendATrackEvent 'Send a Track Event'; GET /api/v1/tracktype 'Return a List
+    of All Track Types'
+  reason: Sending custom track events from client/server runtimes against defined track types is exactly
+    product telemetry instrumentation.
+- tag: Aggregation
+  spec_file: pendoio-aggregation-api-openapi.yml
+  capability_id: BC-4280.30
+  capability_id_l1: BC-4280
+  capability_name: Product Usage Analytics
+  confidence: 0.72
+  evidence: a powerful Aggregation API that runs MongoDB-like structured queries over collected events
+  reason: The aggregation endpoint executes analytical queries over product-usage events collected by
+    the Pendo agent, which is product usage analytics. Slight discount because the only operation summary
+    is the bare word 'visitors' and the surface is a generic query engine.
+- tag: Bulk Deletion (GDPR/CCPA)
+  spec_file: pendoio-bulk-deletion-gdpr-ccpa-api-openapi.yml
+  capability_id: BC-130.50
+  capability_id_l1: BC-130
+  capability_name: Privacy & Data Protection Management
+  confidence: 0.72
+  evidence: POST /api/v1/bulkdelete/visitor Bulk Delete Visitors; tag 'Bulk Deletion (GDPR/CCPA)'
+  reason: Bulk erasure of visitor and account personal data with request-status tracking, explicitly framed
+    as GDPR/CCPA — this realises data-subject rights / privacy and data protection. Some ambiguity with
+    service-privacy commitment handling of data-subject requests.
