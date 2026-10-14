@@ -1,0 +1,59 @@
+generated: '2026-10-14'
+edges:
+- partner_name: Twilio Segment
+  partner: segment
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - pendo
+      status: PUBLIC
+      partner_owned: true
+      connection_modes:
+      - device:web
+      accepted_methods:
+      - Group
+      - Identify
+      component_owners:
+      - PARTNER
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+- partner_name: Hightouch
+  partner: hightouch
+  partner_match: aggregator
+  marketplace: coverage
+  channel: partner-built
+  direction: partner-built
+  type: coverage
+  relationship: connector-coverage
+  evidence: https://hightouch.com/docs/destinations/pendo
+  coverage_role:
+  - destination
+  cdp_signals:
+    destination:
+      catalog_entries:
+      - pendo
+      status: released
+      sync_types:
+      - Events
+      - Objects
+      sync_modes:
+      - insert
+      - update
+  detected_by: sweep-cdp.py
+  first_seen: '2026-10-14'
+method: searched
+checked:
+- https://hightouch.com/docs/destinations/pendo
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
+source:
+- https://hightouch.com/docs/destinations/pendo
+- https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
