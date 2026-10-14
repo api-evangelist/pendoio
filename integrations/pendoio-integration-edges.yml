@@ -1,13 +1,28 @@
 generated: '2026-10-14'
 edges:
+- partner_name: Atlassian Marketplace
+  partner: atlassian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: atlassian
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.atlassian.com/vendors/1215843/pendo
+  listing_count: 1
+  apps:
+  - Pendo Reports for Confluence
+  publisher_name: Pendo
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 - partner_name: Twilio Segment
   partner: segment
   partner_match: aggregator
-  marketplace: coverage
+  marketplace: segment-partner-destinations
   channel: partner-built
-  direction: partner-built
-  type: coverage
-  relationship: connector-coverage
+  direction: third-party
+  type: marketplace
+  relationship: platform-app
   evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
   coverage_role:
   - destination
@@ -50,21 +65,6 @@ edges:
       - update
   detected_by: sweep-cdp.py
   first_seen: '2026-10-14'
-- partner_name: Atlassian Marketplace
-  partner: atlassian
-  partner_match: aggregator
-  type: marketplace
-  marketplace: atlassian
-  channel: partner-built
-  relationship: platform-app
-  direction: third-party
-  evidence: https://marketplace.atlassian.com/vendors/1215843/pendo
-  listing_count: 1
-  apps:
-  - Pendo Reports for Confluence
-  publisher_name: Pendo
-  detected_by: sweep-devtools.py
-  detected: '2026-10-14'
 method: searched
 checked:
 - https://hightouch.com/docs/destinations/pendo
