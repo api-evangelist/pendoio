@@ -123,7 +123,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: pendoio-fivetran
   label: Fivetran
@@ -149,7 +149,7 @@
     - connectors/applications/pendo
     vendor_link: https://www.pendo.io/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: pendoio-meltano
   label: Meltano
@@ -178,7 +178,7 @@
     quality:
     - silver
     builder: 'community (Meltano Hub variant maintainers: singer-io)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: pendoio-microsoft-teams-own
   label: Microsoft Teams (own)
