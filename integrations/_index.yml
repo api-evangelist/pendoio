@@ -15,30 +15,6 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: pendoio-twilio-segment
-  label: Twilio Segment
-  partner: segment
-  partner_name: Twilio Segment
-  type: marketplace
-  marketplace: segment-partner-destinations
-  channel: partner-built
-  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
-- slug: pendoio-hightouch
-  label: Hightouch
-  partner: hightouch
-  partner_name: Hightouch
-  type: coverage
-  marketplace: coverage
-  channel: partner-built
-  evidence: https://hightouch.com/docs/destinations/pendo
-  source: edge
-  relationship: connector-coverage
-  status: not-a-workflow
-  arazzo: null
 - slug: pendoio-zapier
   label: Zapier
   partner: zapier
@@ -66,33 +42,28 @@
     - pendo
   status: not-a-workflow
   arazzo: null
-- slug: pendoio-govramp
-  label: GovRAMP
-  partner_name: GovRAMP
-  category: GovRAMP participation
-  type: register
-  channel: standard-directory
-  evidence: https://govramp.org/program-participants
+- slug: pendoio-twilio-segment
+  label: Twilio Segment
+  partner: segment
+  partner_name: Twilio Segment
+  type: marketplace
+  marketplace: segment-partner-destinations
+  channel: partner-built
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/pendo
   source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: GovRAMP Program Participants (govramp.org/program-participants)
-    standard: GovRAMP
-    spec_file: null
-    role: govramp-participant
-    registered_name: Pendo.io
-    register_id: SS24142
-    matched_domain: pendo.io
-    matched_by: domain
-    domain_source: contact-email
-    statuses:
-    - Progressing
-    offerings:
-    - Pendo Platform
-    signal_note: certified_products = one entry per AUTHORIZED impact level (Authorized / Provisionally Authorized),
-      never per offering; Progressing / Pending / Ready / Core are participation only
-    detected_by: sweep-gov-cloud.py
-    detected: '2026-10-15'
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pendoio-hightouch
+  label: Hightouch
+  partner: hightouch
+  partner_name: Hightouch
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://hightouch.com/docs/destinations/pendo
+  source: edge
+  relationship: connector-coverage
   status: not-a-workflow
   arazzo: null
 - slug: pendoio-airbyte
@@ -180,6 +151,35 @@
     builder: 'community (Meltano Hub variant maintainers: singer-io)'
   status: not-a-workflow
   arazzo: null
+- slug: pendoio-govramp
+  label: GovRAMP
+  partner_name: GovRAMP
+  category: GovRAMP participation
+  type: register
+  channel: standard-directory
+  evidence: https://govramp.org/program-participants
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: GovRAMP Program Participants (govramp.org/program-participants)
+    standard: GovRAMP
+    spec_file: null
+    role: govramp-participant
+    registered_name: Pendo.io
+    register_id: SS24142
+    matched_domain: pendo.io
+    matched_by: domain
+    domain_source: contact-email
+    statuses:
+    - Progressing
+    offerings:
+    - Pendo Platform
+    signal_note: certified_products = one entry per AUTHORIZED impact level (Authorized / Provisionally Authorized),
+      never per offering; Progressing / Pending / Ready / Core are participation only
+    detected_by: sweep-gov-cloud.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
 - slug: pendoio-microsoft-teams-own
   label: Microsoft Teams (own)
   partner: microsoft-teams
@@ -202,6 +202,19 @@
   marketplace: own
   channel: partner-built
   evidence: https://slack.com/marketplace/AATCLQRN2-pendo
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: pendoio-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: Product and Project Management
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/93342/pendo-feedback/
   source: edge
   relationship: platform-app
   status: not-a-workflow
