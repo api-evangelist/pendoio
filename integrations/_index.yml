@@ -180,6 +180,64 @@
     detected: '2026-10-15'
   status: not-a-workflow
   arazzo: null
+- slug: pendoio-cloud-security-alliance-star-registry
+  label: Cloud Security Alliance STAR Registry
+  partner_name: Cloud Security Alliance STAR Registry
+  category: Cloud security assurance
+  type: register
+  channel: standard-directory
+  evidence: https://cloudsecurityalliance.org/star/registry/pendo-io/services/pendo
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
+    spec_file: null
+    standard: CSA STAR
+    role: star-level-1
+    registered_name: Pendo.io
+    registry_id: pendo-io
+    service_url: https://app.pendo.io
+    matched_domain: pendo.io
+    matched_by: domain
+    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
+    levels:
+    - STAR Level 1
+    certified_products: []
+    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
+      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
+      = every instance marked (Deprecated) by the registry; service counts never recorded
+    detected_by: sweep-compliance-assurance.py
+    detected: '2026-10-20'
+  status: not-a-workflow
+  arazzo: null
+- slug: pendoio-battery-ventures
+  label: Battery Ventures
+  partner: battery-ventures
+  partner_name: Battery Ventures
+  category: vc portfolio participation
+  type: register
+  channel: standard-directory
+  evidence: https://www.battery.com/company/pendo/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: Battery Ventures companies (battery.com/company/, the page's own admin-ajax list + company pages)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: Pendo
+    register_id: https://www.battery.com/company/pendo/
+    register_country: Raleigh, North Carolina
+    register_website: http://www.pendo.io/
+    matched_domain: pendo.io
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    status: Active
+  status: not-a-workflow
+  arazzo: null
 - slug: pendoio-microsoft-teams-own
   label: Microsoft Teams (own)
   partner: microsoft-teams
@@ -219,33 +277,16 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
-- slug: pendoio-cloud-security-alliance-star-registry
-  label: Cloud Security Alliance STAR Registry
-  partner_name: Cloud Security Alliance STAR Registry
-  category: Cloud security assurance
-  type: register
-  channel: standard-directory
-  evidence: https://cloudsecurityalliance.org/star/registry/pendo-io/services/pendo
+- slug: pendoio-hubspot-own
+  label: HubSpot (own)
+  partner: hubspot
+  partner_name: HubSpot (own)
+  category: PRODUCT_ANALYTICS
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/pendo
   source: edge
-  relationship: standard-participant
-  contract_reference:
-    register: CSA STAR Registry (cloudsecurityalliance.org/star/registry)
-    spec_file: null
-    standard: CSA STAR
-    role: star-level-1
-    registered_name: Pendo.io
-    registry_id: pendo-io
-    service_url: https://app.pendo.io
-    matched_domain: pendo.io
-    matched_by: domain
-    identity_source: the service URL the organisation filed on its STAR listing (no lookup)
-    levels:
-    - STAR Level 1
-    certified_products: []
-    signal_note: STAR Level 1 (CAIQ self-assessment) = participation; certified_products = one entry per STAR Level
-      2 / STAR for AI Level 2 assessment TYPE (third-party certification, attestation, C-STAR, ValidAIted); lapsed
-      = every instance marked (Deprecated) by the registry; service counts never recorded
-    detected_by: sweep-compliance-assurance.py
-    detected: '2026-10-20'
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
