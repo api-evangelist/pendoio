@@ -318,3 +318,45 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: pendoio-apis-guru-openapi-directory
+  label: APIs.guru OpenAPI Directory
+  partner: apis-guru
+  partner_name: APIs.guru OpenAPI Directory
+  category: API definition directory listing (OpenAPI)
+  type: register
+  channel: standard-directory
+  evidence: https://apis.guru/
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: APIs.guru OpenAPI Directory
+    spec_file: null
+    standard: APIs.guru OpenAPI Directory
+    role: listed-in-directory
+    directory_provider: pendo.io
+    matched_domain: pendo.io
+    matched_by: domain
+    apis_listed: 1
+    version_count: 1
+    first_added: '2018-02-28'
+    last_updated: '2021-06-30'
+    origin_publisher_hosted: false
+    origin_hosts:
+    - apidoc.receptive.io
+    categories:
+    - ecommerce
+    own_openapi_files: 16
+    listings:
+    - key: pendo.io
+      title: Pendo Feedback API
+      preferred: 1.0.0
+      versions: 1
+      swagger_url: https://api.apis.guru/v2/specs/pendo.io/1.0.0/swagger.json
+      origin_url: http://apidoc.receptive.io/receptive.swagger.json
+      openapi_version: '2.0'
+    signal_note: 'participation only: a community directory listing (APIs.guru collects definitions; the provider
+      did not file them). Signals: version_count, apis_listed, origin_publisher_hosted.'
+    detected_by: sweep-openapi-directory-apis-guru.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null
